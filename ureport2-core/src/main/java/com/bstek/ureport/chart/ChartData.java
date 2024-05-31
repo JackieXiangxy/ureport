@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2017 Bstek
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -15,58 +15,94 @@
  ******************************************************************************/
 package com.bstek.ureport.chart;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.bstek.ureport.cache.CacheUtils;
 import com.bstek.ureport.model.Cell;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Jacky.gao
  * @since 2017年6月16日
  */
 public class ChartData {
-	private String id;
-	private String json;
-	@JsonIgnore
-	private String base64Data;
-	@JsonIgnore
-	private int width;
-	@JsonIgnore
-	private int height;
-	public ChartData(String json,Cell cell) {
-		this.json=json;
-		this.id=cell.getName();
-	}
-	public String getJson() {
-		return json;
-	}
-	public void setBase64Data(String base64Data) {
-		this.base64Data = base64Data;
-	}
-	
-	public String retriveBase64Data(){
-		if(base64Data!=null){
-			return base64Data;
-		}
-		ChartData data=CacheUtils.getChartData(id);
-		if(data!=null){
-			return data.retriveBase64Data();
-		}
-		return base64Data;
-	}
-	public int getWidth() {
-		return width;
-	}
-	public void setWidth(int width) {
-		this.width = width;
-	}
-	public int getHeight() {
-		return height;
-	}
-	public void setHeight(int height) {
-		this.height = height;
-	}
-	public String getId() {
-		return id;
-	}
+    private String id;
+    private String json;
+    @JsonIgnore
+    private String base64Data;
+    @JsonIgnore
+    private int width;
+    @JsonIgnore
+    private int height;
+
+    public ChartData(String json, Cell cell) {
+        this.json = json;
+        this.id = cell.getName();
+    }
+
+    public ChartData() {
+    }
+
+    public ChartData(String id, String json) {
+        this.id = id;
+        this.json = json;
+    }
+
+    public ChartData(String id, String json, String base64Data, int width, int height) {
+        this.id = id;
+        this.json = json;
+        this.base64Data = base64Data;
+        this.width = width;
+        this.height = height;
+    }
+
+    public String getJson() {
+        return json;
+    }
+
+    public void setJson(String json) {
+        this.json = json;
+    }
+
+    public String retriveBase64Data() {
+        if (base64Data != null) {
+            return base64Data;
+        }
+        ChartData data = CacheUtils.getChartData(id);
+        if (data != null) {
+            return data.retriveBase64Data();
+        }
+        return base64Data;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getBase64Data() {
+        return base64Data;
+    }
+
+    public void setBase64Data(String base64Data) {
+        this.base64Data = base64Data;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
 }

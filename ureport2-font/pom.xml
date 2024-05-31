@@ -8,20 +8,9 @@
 		<version>${revision}</version>
 	</parent>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+	<name>UReport2 Font Project</name>
+	<url>https://github.com/youseries/ureport/tree/master/ureport2-font</url>
 
-  <dependencies>
-  	<dependency>
-  		<groupId>com.bstek.ureport</groupId>
-  		<artifactId>ureport2-core</artifactId>
-  		<version>2.0.1</version>
-  	</dependency>
-  </dependencies>
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
@@ -36,6 +25,7 @@
 			<organizationUrl>http://www.bstek.com</organizationUrl>
 		</developer>
 	</developers>
+
 	<scm>
 		<connection>https://github.com/youseries/ureport.git</connection>
 		<developerConnection>https://github.com/youseries/ureport.git</developerConnection>
@@ -45,6 +35,20 @@
 		<name>Bstek</name>
 		<url>http://www.bstek.com</url>
 	</organization>
-	<name>UReport2 Font Project</name>
-	<url>https://github.com/youseries/ureport/tree/master/ureport2-font</url>
+
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.bstek.ureport</groupId>
+			<artifactId>ureport2-core</artifactId>
+			<version>${revision}</version>
+		</dependency>
+	</dependencies>
 </project>

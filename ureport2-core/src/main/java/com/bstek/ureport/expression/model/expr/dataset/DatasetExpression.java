@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2017 Bstek
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -14,12 +14,6 @@
  * the License.
  ******************************************************************************/
 package com.bstek.ureport.expression.model.expr.dataset;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.bstek.ureport.build.BindData;
 import com.bstek.ureport.build.Context;
@@ -34,149 +28,155 @@ import com.bstek.ureport.expression.model.data.BindDataListExpressionData;
 import com.bstek.ureport.expression.model.data.ExpressionData;
 import com.bstek.ureport.expression.model.expr.BaseExpression;
 import com.bstek.ureport.model.Cell;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Jacky.gao
  * @since 2016年11月18日
  */
 public class DatasetExpression extends BaseExpression {
-	private static final long serialVersionUID = -8794866509447790340L;
-	private String datasetName;
-	private AggregateType aggregate;
-	private String property;
-	/**
-	 * 当aggregate类型为自定义分组时，采用此属性来存储自定义分组各个项目
-	 */
-	private List<GroupItem> groupItems;
-	
-	private MappingType mappingType=MappingType.simple;
-	
-	private String mappingDataset;
-	private String mappingKeyProperty;
-	private String mappingValueProperty;
-	
-	private List<MappingItem> mappingItems;
-	
-	@JsonIgnore 
-	private Condition condition;
-	
-	@JsonIgnore 
-	private Map<String,String> mapping=null;
-	
-	/**
-	 * 此属性给设计器使用，引擎不使用该属性
-	 */
-	private List<Condition> conditions;
-	private Order order;
-	
-	@Override
-	public ExpressionData<?> compute(Cell cell,Cell currentCell,Context context) {
-		List<BindData> bindDataList=DatasetUtils.computeDatasetExpression(this, cell, context);
-		return new BindDataListExpressionData(bindDataList);
-	}
-	
-	public String getDatasetName() {
-		return datasetName;
-	}
+    private static final long serialVersionUID = -8794866509447790340L;
+    private String datasetName;
+    private AggregateType aggregate;
+    private String property;
+    /**
+     * 当aggregate类型为自定义分组时，采用此属性来存储自定义分组各个项目
+     */
+    private List<GroupItem> groupItems;
 
-	public void setDatasetName(String datasetName) {
-		this.datasetName = datasetName;
-	}
+    private MappingType mappingType = MappingType.simple;
 
-	public AggregateType getAggregate() {
-		return aggregate;
-	}
+    private String mappingDataset;
+    private String mappingKeyProperty;
+    private String mappingValueProperty;
 
-	public void setAggregate(AggregateType aggregate) {
-		this.aggregate = aggregate;
-	}
+    private List<MappingItem> mappingItems;
 
-	public String getProperty() {
-		return property;
-	}
+    @JsonIgnore
+    private Condition condition;
 
-	public void setProperty(String property) {
-		this.property = property;
-	}
+    @JsonIgnore
+    private Map<String, String> mapping = null;
 
-	public List<GroupItem> getGroupItems() {
-		return groupItems;
-	}
+    /**
+     * 此属性给设计器使用，引擎不使用该属性
+     */
+    private List<Condition> conditions;
+    private Order order;
 
-	public void setGroupItems(List<GroupItem> groupItems) {
-		this.groupItems = groupItems;
-	}
+    @Override
+    public ExpressionData<?> compute(Cell cell, Cell currentCell, Context context) {
+        List<BindData> bindDataList = DatasetUtils.computeDatasetExpression(this, cell, context);
+        return new BindDataListExpressionData(bindDataList);
+    }
 
-	public Condition getCondition() {
-		return condition;
-	}
+    public String getDatasetName() {
+        return datasetName;
+    }
 
-	public void setCondition(Condition condition) {
-		this.condition = condition;
-	}
+    public void setDatasetName(String datasetName) {
+        this.datasetName = datasetName;
+    }
 
-	public List<Condition> getConditions() {
-		return conditions;
-	}
+    public AggregateType getAggregate() {
+        return aggregate;
+    }
 
-	public void setConditions(List<Condition> conditions) {
-		this.conditions = conditions;
-	}
+    public void setAggregate(AggregateType aggregate) {
+        this.aggregate = aggregate;
+    }
 
-	public Order getOrder() {
-		return order;
-	}
+    public String getProperty() {
+        return property;
+    }
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+    public void setProperty(String property) {
+        this.property = property;
+    }
 
-	public List<MappingItem> getMappingItems() {
-		return mappingItems;
-	}
-	public void setMappingItems(List<MappingItem> mappingItems) {
-		this.mappingItems = mappingItems;
-		if(mappingItems!=null){
-			mapping=new HashMap<String,String>();
-			for(MappingItem item:mappingItems){
-				mapping.put(item.getValue(),item.getLabel());
-			}				
-		}
-	}
-	
-	public MappingType getMappingType() {
-		return mappingType;
-	}
+    public List<GroupItem> getGroupItems() {
+        return groupItems;
+    }
 
-	public void setMappingType(MappingType mappingType) {
-		this.mappingType = mappingType;
-	}
+    public void setGroupItems(List<GroupItem> groupItems) {
+        this.groupItems = groupItems;
+    }
 
-	public String getMappingDataset() {
-		return mappingDataset;
-	}
+    public Condition getCondition() {
+        return condition;
+    }
 
-	public void setMappingDataset(String mappingDataset) {
-		this.mappingDataset = mappingDataset;
-	}
+    public void setCondition(Condition condition) {
+        this.condition = condition;
+    }
 
-	public String getMappingKeyProperty() {
-		return mappingKeyProperty;
-	}
+    public List<Condition> getConditions() {
+        return conditions;
+    }
 
-	public void setMappingKeyProperty(String mappingKeyProperty) {
-		this.mappingKeyProperty = mappingKeyProperty;
-	}
+    public void setConditions(List<Condition> conditions) {
+        this.conditions = conditions;
+    }
 
-	public String getMappingValueProperty() {
-		return mappingValueProperty;
-	}
+    public Order getOrder() {
+        return order;
+    }
 
-	public void setMappingValueProperty(String mappingValueProperty) {
-		this.mappingValueProperty = mappingValueProperty;
-	}
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	public Map<String, String> getMapping() {
-		return mapping;
-	}
+    public List<MappingItem> getMappingItems() {
+        return mappingItems;
+    }
+
+    public void setMappingItems(List<MappingItem> mappingItems) {
+        this.mappingItems = mappingItems;
+        if (mappingItems != null) {
+            mapping = new HashMap<String, String>();
+            for (MappingItem item : mappingItems) {
+                mapping.put(item.getValue(), item.getLabel());
+            }
+        }
+    }
+
+    public MappingType getMappingType() {
+        return mappingType;
+    }
+
+    public void setMappingType(MappingType mappingType) {
+        this.mappingType = mappingType;
+    }
+
+    public String getMappingDataset() {
+        return mappingDataset;
+    }
+
+    public void setMappingDataset(String mappingDataset) {
+        this.mappingDataset = mappingDataset;
+    }
+
+    public String getMappingKeyProperty() {
+        return mappingKeyProperty;
+    }
+
+    public void setMappingKeyProperty(String mappingKeyProperty) {
+        this.mappingKeyProperty = mappingKeyProperty;
+    }
+
+    public String getMappingValueProperty() {
+        return mappingValueProperty;
+    }
+
+    public void setMappingValueProperty(String mappingValueProperty) {
+        this.mappingValueProperty = mappingValueProperty;
+    }
+
+    public Map<String, String> getMapping() {
+        return mapping;
+    }
 }
