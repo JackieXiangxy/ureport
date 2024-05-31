@@ -343,7 +343,6 @@ public class Cell implements ReportCell {
 			}
 			if(StringUtils.isNotBlank(item.getNewValue())){
 				this.data=item.getNewValue();
-				this.formatData=item.getNewValue();
 			}
 			if(StringUtils.isNotBlank(item.getLinkUrl())){
 				linkUrl=item.getLinkUrl();
@@ -596,7 +595,7 @@ public class Cell implements ReportCell {
 			lineHeight=cellStyle.getLineHeight();
 		}
 		fontSize=fontSize*lineHeight;
-		int singleLineHeight=UnitUtils.pointToPixel(fontSize)-2;//fontMetrics.getHeight();
+		int singleLineHeight=UnitUtils.pointToPixel(fontSize);//fontMetrics.getHeight();
 		if(textWidth<=totalColumnWidth){
 			return;
 		}

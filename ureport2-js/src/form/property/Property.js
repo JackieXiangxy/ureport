@@ -25,10 +25,10 @@ export default class Property{
     }
     buildBindParameter(){
         const group=$("<div class='form-group'><label>绑定的查询参数</label></div>");
-        this.bindFieldEditor=$("<input type='text' class='form-control'>");
-        group.append(this.bindFieldEditor);
+        this.bindFieldSelect=$("<select class='form-control'>");
+        group.append(this.bindFieldSelect);
         const self=this;
-        this.bindFieldEditor.change(function(){
+        this.bindFieldSelect.change(function(){
             const value=$(this).val();
             self.current.setBindParameter(value);
         });
@@ -72,6 +72,14 @@ export default class Property{
         }
         this.positionLabelSelect.val(instance.labelPosition);
         this.textLabel.val(instance.label);
-        this.bindFieldEditor.val(instance.bindParameter);
+        this.bindFieldSelect.empty();
+        for(let param of formBuilder.reportParameters || []){
+            this.bindFieldSelect.append(`<option>${param.name}</option>`);
+        }
+        if(!instance.bindParameter){
+            this.bindFieldSelect.append(`<option selected></option>`);
+        }else{
+            this.bindFieldSelect.val(instance.bindParameter);
+        }
     }
 }

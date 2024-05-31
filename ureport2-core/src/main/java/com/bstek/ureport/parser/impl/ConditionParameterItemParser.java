@@ -138,7 +138,6 @@ public class ConditionParameterItemParser implements Parser<ConditionPropertyIte
 			return condition;
 		}else{
 			BothExpressionCondition exprCondition=new BothExpressionCondition();
-			exprCondition.setOperation(ele.attributeValue("op"));
 			exprCondition.setOp(Op.parse(ele.attributeValue("op")));
 			for(Object o:ele.elements()){
 				if(o==null || !(o instanceof Element)){

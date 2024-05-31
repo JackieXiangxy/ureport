@@ -1,0 +1,38 @@
+HELP.md
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.springBeans
+.sts4-cache
+*.class
+target/*
+*/target/*
+*.settings
+*.project
+*.factorypath
+
+
+/target/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.txt
+.flattened-pom.xml
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+######gradle#######
+.gradle
+.gradle/*
+/doc/.back_云上妇幼/
+
+his.iml
