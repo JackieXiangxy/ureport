@@ -62,7 +62,7 @@ public class UReportServlet extends HttpServlet {
         String path = req.getContextPath() + URL;
         String uri = req.getRequestURI();
         String targetUrl = uri.substring(path.length());
-        if (targetUrl.length() < 1) {
+        if (targetUrl.isEmpty()) {
             outContent(resp, "Welcome to use ureport,please specify target url.");
             return;
         }
