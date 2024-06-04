@@ -62,11 +62,11 @@
             <organizationUrl>http://www.bstek.com</organizationUrl>
         </developer>
     </developers>
-    <scm>
-        <connection>https://github.com/youseries/ureport.git</connection>
-        <developerConnection>https://github.com/youseries/ureport.git</developerConnection>
-        <url>https://github.com/youseries/ureport</url>
-    </scm>
+    <!--  <scm>
+          <connection>https://github.com/youseries/ureport.git</connection>
+          <developerConnection>https://github.com/youseries/ureport.git</developerConnection>
+          <url>https://github.com/youseries/ureport</url>
+      </scm>-->
     <organization>
         <name>Bstek</name>
         <url>http://www.bstek.com</url>
@@ -294,11 +294,11 @@
                     <version>${maven-source.version}</version>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${maven-nexus-staging.version}</version>
-                </plugin>
+                <!--                <plugin>
+                                    <groupId>org.sonatype.plugins</groupId>
+                                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                                    <version>${maven-nexus-staging.version}</version>
+                                </plugin>-->
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -370,16 +370,16 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
+            <!--            <plugin>
+                            <groupId>org.sonatype.plugins</groupId>
+                            <artifactId>nexus-staging-maven-plugin</artifactId>
+                            <extensions>true</extensions>
+                            <configuration>
+                                <serverId>ossrh</serverId>
+                                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            </configuration>
+                        </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -412,20 +412,20 @@
                     </additionalOptions>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-gpg-plugin</artifactId>
+                            <version>1.5</version>
+                            <executions>
+                                <execution>
+                                    <id>sign-artifacts</id>
+                                    <phase>verify</phase>
+                                    <goals>
+                                        <goal>sign</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>-->
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -457,15 +457,17 @@
         </plugins>
     </build>
 
-    <!--    <distributionManagement>
-            <snapshotRepository>
-                <id>ossrh</id>
-                <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            </snapshotRepository>
-            <repository>
-                <id>ossrh</id>
-                <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-            </repository>
-        </distributionManagement>-->
+    <distributionManagement>
+        <repository>
+            <id>release</id>
+            <name>release</name>
+            <url>http://192.168.1.228:9000/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots</name>
+            <url>http://192.168.1.228:9000/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

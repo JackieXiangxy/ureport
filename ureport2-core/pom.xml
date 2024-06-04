@@ -1,13 +1,15 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>ureport2-core</artifactId>
-    <version>${revision}</version>
     <parent>
         <groupId>com.bstek.ureport</groupId>
         <artifactId>ureport2</artifactId>
         <version>${revision}</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ureport2-core</artifactId>
+    <version>${revision}</version>
+    <name>${artifactId}</name>
+    <url>https://github.com/youseries/ureport/tree/master/ureport2-core</url>
 
     <licenses>
         <license>
@@ -23,18 +25,12 @@
             <organizationUrl>http://www.bstek.com</organizationUrl>
         </developer>
     </developers>
-    <scm>
-        <connection>scm:git:https://github.com/youseries/ureport.git</connection>
-        <developerConnection>scm:git:git@github.com:youseries/ureport.git</developerConnection>
-        <url>https://github.com/youseries/ureport</url>
-        <tag>ureport2-core-2.2.4</tag>
-    </scm>
+
     <organization>
         <name>Bstek</name>
         <url>http://www.bstek.com</url>
     </organization>
-    <name>UReport2 Core Project</name>
-    <url>https://github.com/youseries/ureport/tree/master/ureport2-core</url>
+
 
     <properties>
         <java.version>1.8</java.version>
