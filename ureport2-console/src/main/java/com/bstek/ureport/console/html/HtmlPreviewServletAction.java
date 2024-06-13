@@ -51,14 +51,14 @@ import java.util.*;
  * @since 2017年2月15日
  */
 public class HtmlPreviewServletAction extends RenderPageServletAction {
+    private final HtmlProducer htmlProducer = new HtmlProducer();
     private ExportManager exportManager;
     private ReportBuilder reportBuilder;
     private ReportRender reportRender;
-    private HtmlProducer htmlProducer = new HtmlProducer();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String method = retriveMethod(req);
+        String method = retrieveMethod(req);
         if (method != null) {
             invokeMethod(method, req, resp);
         } else {
@@ -69,7 +69,7 @@ public class HtmlPreviewServletAction extends RenderPageServletAction {
                 htmlReport = loadReport(req);
             } catch (Exception ex) {
                 if (!(ex instanceof ReportDesignException)) {
-                    ex.printStackTrace();
+                    log.error("报表计算出错，错误信息如下：", ex);
                 }
                 errorMsg = buildExceptionMessage(ex);
             }

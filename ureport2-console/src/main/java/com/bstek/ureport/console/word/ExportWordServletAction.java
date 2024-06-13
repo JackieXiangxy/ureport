@@ -46,7 +46,7 @@ public class ExportWordServletAction extends BaseServletAction {
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String method = retriveMethod(req);
+        String method = retrieveMethod(req);
         if (method != null) {
             invokeMethod(method, req, resp);
         } else {

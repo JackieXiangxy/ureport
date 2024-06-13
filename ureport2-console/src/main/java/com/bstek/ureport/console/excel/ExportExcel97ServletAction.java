@@ -40,13 +40,13 @@ import java.util.Map;
  * @since 2017年7月3日
  */
 public class ExportExcel97ServletAction extends BaseServletAction {
+    private final Excel97Producer excelProducer = new Excel97Producer();
     private ReportBuilder reportBuilder;
     private ExportManager exportManager;
-    private Excel97Producer excelProducer = new Excel97Producer();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String method = retriveMethod(req);
+        String method = retrieveMethod(req);
         if (method != null) {
             invokeMethod(method, req, resp);
         } else {
