@@ -31,13 +31,13 @@
     </bean>
 
     <bean id="ureport.exportExcelServletAction" class="com.bstek.ureport.console.excel.ExportExcelServletAction">
-        <property name="exportManager" ref="ureport.exportManager"/>
-        <property name="reportBuilder" ref="ureport.reportBuilder"/>
+        <constructor-arg name="exportManager" ref="ureport.exportManager"/>
+        <constructor-arg name="reportBuilder" ref="ureport.reportBuilder"/>
     </bean>
 
     <bean id="ureport.exportExcel97ServletAction" class="com.bstek.ureport.console.excel.ExportExcel97ServletAction">
-        <property name="exportManager" ref="ureport.exportManager"/>
-        <property name="reportBuilder" ref="ureport.reportBuilder"/>
+        <constructor-arg name="exportManager" ref="ureport.exportManager"/>
+        <constructor-arg name="reportBuilder" ref="ureport.reportBuilder"/>
     </bean>
 
     <bean id="ureport.imageServletAction" class="com.bstek.ureport.console.image.ImageServletAction"/>

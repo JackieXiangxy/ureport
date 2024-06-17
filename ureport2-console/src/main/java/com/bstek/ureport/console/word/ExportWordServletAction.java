@@ -33,6 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
@@ -40,9 +41,9 @@ import java.util.Map;
  * @since 2017年4月17日
  */
 public class ExportWordServletAction extends BaseServletAction {
+    private final WordProducer wordProducer = new WordProducer();
     private ReportBuilder reportBuilder;
     private ExportManager exportManager;
-    private WordProducer wordProducer = new WordProducer();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,7 +63,7 @@ public class ExportWordServletAction extends BaseServletAction {
         }
         String fileName = req.getParameter("_n");
         fileName = buildDownloadFileName(file, fileName, ".docx");
-        fileName = new String(fileName.getBytes("UTF-8"), "ISO8859-1");
+        fileName = new String(fileName.getBytes(StandardCharsets.UTF_8), "ISO8859-1");
         resp.setContentType("application/octet-stream;charset=ISO8859-1");
         resp.setHeader("Content-Disposition", "attachment;filename=\"" + fileName + "\"");
         Map<String, Object> parameters = buildParameters(req);
