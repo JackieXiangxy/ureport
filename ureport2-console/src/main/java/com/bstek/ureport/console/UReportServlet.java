@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,9 +36,16 @@ import java.util.Map;
  * @since 2017年1月25日
  */
 public class UReportServlet extends HttpServlet {
-    public static final String URL = "/ureport";
+    /**
+     * UREPORT统一公共前缀
+     */
+    public static final String PREFIX_URL = "/ureport";
     private static final long serialVersionUID = 533049461276487971L;
-    private Map<String, ServletAction> actionMap = new HashMap<String, ServletAction>();
+
+    /**
+     * 请求响应对象
+     */
+    private final Map<String, ServletAction> actionMap = new HashMap<>();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -59,7 +67,7 @@ public class UReportServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = req.getContextPath() + URL;
+        String path = req.getContextPath() + PREFIX_URL;
         String uri = req.getRequestURI();
         String targetUrl = uri.substring(path.length());
         if (targetUrl.isEmpty()) {
@@ -79,7 +87,7 @@ public class UReportServlet extends HttpServlet {
         try {
             targetHandler.execute(req, resp);
         } catch (Exception ex) {
-            resp.setCharacterEncoding("UTF-8");
+            resp.setCharacterEncoding(StandardCharsets.UTF_8.displayName());
             PrintWriter pw = resp.getWriter();
             Throwable e = buildRootException(ex);
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
