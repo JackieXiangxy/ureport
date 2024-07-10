@@ -4,6 +4,7 @@
   "description": "ureport2.0 designer base on web and some web ui",
   "main": "index.js",
   "scripts": {
+    "build": "babel src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,14 +17,14 @@
   },
   "license": "The Apache-2.0 License",
   "dependencies": {
-    "bootbox": "^4.4.0",
+    "bootbox": "^6.0.0",
     "bootstrap": "^3.3.7",
     "bootstrap-colorpicker": "^2.5.0",
     "chart.js": "^2.7.2",
     "chartjs-plugin-datalabels": "^0.3.0",
     "codemirror": "^5.23.0",
     "completer": "^0.1.3",
-    "handsontable": "^0.32.0",
+    "handsontable": "^14.4.0",
     "jquery": "^3.1.1",
     "jquery-contextmenu": "^2.4.2",
     "node-uuid": "^1.4.7",
@@ -34,13 +35,13 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "css-loader": "^0.28.11",
+    "babel-loader": "^9.1.3",
+    "babel-preset-env": "^0.0.0",
+    "css-loader": "^7.1.2",
     "expose-loader": "^0.7.1",
-    "file-loader": "^0.9.0",
+    "file-loader": "^6.2.0",
     "style-loader": "^0.13.1",
-    "uglifyjs-webpack-plugin": "^1.2.4",
-    "url-loader": "^0.5.7"
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "url-loader": "^4.1.1"
   }
 }

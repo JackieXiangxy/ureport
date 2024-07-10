@@ -208,6 +208,7 @@
         <module>ureport2-console</module>
         <module>ureport2-core</module>
         <module>ureport2-font</module>
+        <module>ureport2-example</module>
     </modules>
 
     <build>
